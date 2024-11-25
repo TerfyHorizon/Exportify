@@ -64,10 +64,10 @@ Getting Started:
    b. Log in with your Spotify account.
    c. Click 'Create an App' and fill in the required details.
    d. After creating the app, you'll receive a 'Client ID' and 'Client Secret'.
-   e. Copy and paste these into the 'exportify_config.json' file created by the tool.
+   e. Copy and paste these into the 'config.json' file created by the tool.
 
 2. Run Exportify:
-   - On first run (double-click), Exportify will generate the 'exportify_config.json' file and create the necessary directories.
+   - On first run (double-click), Exportify will generate the 'onfig.json' file and create the necessary directories.
    - Edit this file to include your Spotify credentials.
    - After setup, run Exportify from the command line with the Spotify playlist URL to export the playlist.
 
@@ -83,7 +83,7 @@ Modes of Operation:
 ===================
 1. **Double-Click Setup Mode**:
    - If you double-click `Exportify.exe` (without providing any command-line arguments), it will perform the initial setup.
-   - This includes creating necessary directories in your Documents folder (`Documents/Exportify` and `Documents/Exportify/Playlists`), and generating the `exportify_config.json` and `README.txt` files if they don't exist.
+   - This includes creating necessary directories in your Documents folder (`Documents/Exportify` and `Documents/Exportify/Playlists`), and generating the `config.json` and `README.txt` files if they don't exist.
 
 2. **Command-Line Export Mode**:
    - Once setup is complete, run `Exportify.exe` from the command line with a Spotify playlist URL to export the playlist.
@@ -201,7 +201,7 @@ def main():
         playlists_dir = os.path.join(documents_path, "Exportify", "Playlists")
 
         # Authenticate with Spotify
-        config_file = os.path.join(documents_path, "Exportify", "exportify_config.json")
+        config_file = os.path.join(documents_path, "Exportify", "config.json")
         sp = authenticate_spotify(config_file)
 
         # Extract playlist ID and save tracks to file
@@ -215,7 +215,7 @@ def main():
         app_dir, playlists_dir = create_directories()
 
         # Define paths for config and README
-        config_file = get_app_file_path(app_dir, 'exportify_config.json')
+        config_file = get_app_file_path(app_dir, 'config.json')
         readme_file = get_app_file_path(app_dir, 'README.txt')
         
         # Create config template and README file if they don't exist
