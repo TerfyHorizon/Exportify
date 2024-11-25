@@ -29,7 +29,7 @@
 ### Installation
 
 1. **Download the Executable**
-   - Download the latest release of `exportify-gui.exe` from the [Releases]([https://github.com/your-repo/releases](https://github.com/TerfyHorizon/Exportify/releases) page.
+   - Download the latest release of `exportify-gui.exe` from the [Releases](https://github.com/TerfyHorizon/Exportify/releases) page.
 
 2. **Run the Application**
    - Double-click `exportify-gui.exe`.
