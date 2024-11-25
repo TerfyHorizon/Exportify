@@ -136,12 +136,6 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 
 ---
 
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
----
-
 ## Acknowledgments
 
 - [Spotify Developer API](https://developer.spotify.com/documentation/web-api/)
