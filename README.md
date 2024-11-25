@@ -1,6 +1,6 @@
-# Exportify-GUI
+# Exportify
 
-**Exportify-GUI** is a Python-based tool that allows you to export Spotify playlists to text files using a simple graphical user interface (GUI). This application is ideal for anyone who wants to save their playlists as text files for reference, sharing, or backup.
+**Exportify** is a Python-based tool that allows you to export Spotify playlists to text files using a simple graphical user interface (GUI). This application is ideal for anyone who wants to save their playlists as text files for reference, sharing, or backup.
 
 ---
 
