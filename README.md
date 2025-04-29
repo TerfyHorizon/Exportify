@@ -1,6 +1,6 @@
-# Exportify
+# ExportifyX
 
-**Exportify** is a fully local, cross-platform Python tool that exports Spotify playlists to TXT, CSV, Markdown, or JSON — through a clean Web-based dashboard or command-line interface.
+**ExportifyX** is a fully local, cross-platform Python tool that exports Spotify playlists to TXT, CSV, Markdown, or JSON — through a clean Web-based dashboard or command-line interface.
 
 
 - 🎧 No installation
@@ -34,7 +34,7 @@
    - Create an app and copy your **Client ID** and **Client Secret**
 
 2. **Python 3.13.3 (recommended)**  
-   Exportify is developed and tested on Python 3.13.3.  
+   ExportifyX is developed and tested on Python 3.13.3.  
    Python 3.10+ is likely fine, but the latest version is recommended.
 
 ---
@@ -43,8 +43,8 @@
 
 1. **Clone the project**
    ```bash
-   git clone https://github.com/your-username/exportify.git
-   cd exportify
+   git clone https://github.com/your-username/exportifyx.git
+   cd exportifyx
    ```
 
 2. **Install dependencies**
@@ -72,7 +72,7 @@
 ### 🔹 Web GUI (Default Mode)
 
 ```bash
-python3 -m exportify
+python3 -m exportifyx
 ```
 
 - Automatically opens `http://127.0.0.1:5050`
@@ -87,7 +87,7 @@ python3 -m exportify
 ### 🔸 CLI Mode
 
 ```bash
-python3 -m exportify --cli --playlist-url "https://open.spotify.com/playlist/..." --format csv
+python3 -m exportifyx --cli --playlist-url "https://open.spotify.com/playlist/..." --format csv
 ```
 
 ---
@@ -95,7 +95,7 @@ python3 -m exportify --cli --playlist-url "https://open.spotify.com/playlist/...
 ### 🔹 Batch Export (CLI)
 
 ```bash
-python3 -m exportify --cli --batch path/to/file.txt --format json
+python3 -m exportifyx --cli --batch path/to/file.txt --format json
 ```
 
 Where `file.txt` contains one playlist URL per line.
@@ -124,11 +124,11 @@ Exporting playlists:  75%|██████████████████
 ## 📂 Project Structure
 
 ```plaintext
-exportify/
+exportifyx/
 ├── __main__.py
 ├── cli.py
 ├── config.py
-├── exportify.py
+├── exportifyx.py
 ├── webgui.py
 ├── templates/
 │   ├── base.html
