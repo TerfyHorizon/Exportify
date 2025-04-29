@@ -1,6 +1,7 @@
 # Exportify
 
-**Exportify** is a fully local, cross-platform tool for exporting Spotify playlists to `.txt`, `.csv`, `.md`, or `.json` — from a clean Web-based interface or command-line.
+**Exportify** is a fully local, cross-platform Python tool that exports Spotify playlists to TXT, CSV, Markdown, or JSON — through a clean Web-based dashboard or command-line interface.
+
 
 - 🎧 No installation
 - 🔒 Fully offline (except Spotify API access)
