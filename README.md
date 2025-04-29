@@ -1,146 +1,169 @@
 # Exportify
 
-**Exportify** is a Python-based tool that allows you to export Spotify playlists to text files using a simple graphical user interface (GUI). This application is ideal for anyone who wants to save their playlists as text files for reference, sharing, or backup.
+**Exportify** is a fully local, cross-platform tool for exporting Spotify playlists to `.txt`, `.csv`, `.md`, or `.json` — from a clean Web-based interface or command-line.
+
+- 🎧 No installation
+- 🔒 Fully offline (except Spotify API access)
+- 💾 Runs from USB or any folder
+- 💻 Works on Linux, macOS, Windows, and Android (via Termux)
 
 ---
 
-## Features
+## ✨ Features
 
-- **Graphical User Interface (GUI):** No need to use the command line.
-- **Spotify Playlist Export:** Export your playlists to text files, including the track name and artist.
-- **Dark Theme:** Minimalist dark theme with an aesthetic `#212121` background.
-- **Automatic Setup:** Automatically creates necessary directories and config files on first run.
+- **Web-Based Interface:** Local Flask WebGUI — dark-themed, mobile-safe, runs at `http://127.0.0.1:5050`
+- **CLI Mode with Flags:** Power users can use `--cli`, `--format`, and `--batch`
+- **Multiple Export Formats:** 
+  - Markdown (`.md`)
+  - Plain Text (`.txt`)
+  - CSV (`.csv`)
+  - JSON (`.json`)
+- **Batch Mode:** Export multiple playlists at once from a text file
+- **Progress Bar:** Beautiful `tqdm` CLI progress bar during batch exports
+- **Fully Offline & Self-Contained:** All data stays on your machine
 
 ---
 
-## Getting Started
+## 🔧 Getting Started
 
 ### Prerequisites
 
 1. **Spotify API Credentials**
-   - Go to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/applications).
-   - Log in with your Spotify account.
-   - Click **Create an App** and provide the required details.
-   - Copy the **Client ID** and **Client Secret**.
+   - Go to the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/applications)
+   - Create an app and copy your **Client ID** and **Client Secret**
 
-2. **Python (Optional for Developers)**
-   - [Download Python](https://www.python.org/) (if you want to customize or run the script directly).
+2. **Python 3.13.3 (recommended)**  
+   Exportify is developed and tested on Python 3.13.3.  
+   Python 3.10+ is likely fine, but the latest version is recommended.
+
+---
 
 ### Installation
 
-1. **Download the Executable**
-   - Download the latest release of `exportify-gui.exe` from the [Releases](https://github.com/TerfyHorizon/Exportify/releases) page.
-
-2. **Run the Application**
-   - Double-click `exportify-gui.exe`.
-   - The application will create the following directories in your `Documents` folder:
-     ```
-     Documents/
-       └── Exportify-GUI/
-           ├── Playlists/
-           ├── exportify_config.json
-           └── README.txt
-     ```
-
-3. **Set Up API Credentials**
-   - Open the `exportify_config.json` file in a text editor.
-   - Paste your **Client ID** and **Client Secret** into the respective fields:
-     ```json
-     {
-         "client_id": "YOUR_SPOTIFY_CLIENT_ID",
-         "client_secret": "YOUR_SPOTIFY_CLIENT_SECRET"
-     }
-     ```
-
-4. **Start Exporting Playlists**
-   - Launch `exportify-gui.exe`.
-   - Click the **Export Playlist** button.
-   - Paste your Spotify playlist URL when prompted.
-   - The exported playlist will be saved as a `.txt` file in the `Playlists` folder.
-
----
-
-## Usage
-
-### Exporting a Playlist
-
-1. Copy the URL of a Spotify playlist (e.g., `https://open.spotify.com/playlist/5ZQsZWjg49ke0IvsmcuAQB`).
-2. Open the application and click **Export Playlist**.
-3. Paste the URL into the dialog box.
-4. The playlist will be exported as a `.txt` file in `Documents/Exportify-GUI/Playlists`.
-
----
-
-## Example Output
-
-If you export a playlist named "My Playlist," the `.txt` file will look like this:
-
-```
-Song 1 by Artist A
-Song 2 by Artist B
-Song 3 by Artist C
-...
-```
-
----
-
-## Development
-
-If you'd like to modify the script or contribute, follow these steps:
-
-### Prerequisites
-
-- Python 3.9+
-- Install dependencies:
-  ```bash
-  pip install spotipy
-  ```
-
-### Running the Script
-
-1. Clone the repository:
+1. **Clone the project**
    ```bash
-   git clone https://github.com/your-repo/exportify-gui.git
-   cd exportify-gui
+   git clone https://github.com/your-username/exportify.git
+   cd exportify
    ```
 
-2. Run the script:
+2. **Install dependencies**
    ```bash
-   python ExportifyGUI.py
+   pip install -r requirements.txt
    ```
 
-### Building the Executable
+3. **Edit `config.toml`**
+   ```toml
+   [spotify]
+   client_id = "YOUR_CLIENT_ID_HERE"
+   client_secret = "YOUR_CLIENT_SECRET_HERE"
 
-To create a standalone executable, use [PyInstaller](https://pyinstaller.org/):
+   [output]
+   output_dir = "playlists"
+
+   [webgui]
+   port = 5050
+   ```
+
+---
+
+## 🚀 Usage
+
+### 🔹 Web GUI (Default Mode)
+
 ```bash
-pyinstaller --onefile --name exportify-gui ExportifyGUI.py
+python3 -m exportify
 ```
 
-The executable will be created in the `dist` directory.
+- Automatically opens `http://127.0.0.1:5050`
+- Paste a Spotify playlist URL
+- Select export format
+- Click Export
+
+> ✅ All exports saved to the `playlists/` folder
 
 ---
 
-## Known Issues
+### 🔸 CLI Mode
 
-1. **Cache Warnings:**
-   - Cache-related warnings (`Couldn't write token to cache`) may appear but do not affect functionality.
-
-2. **Rate Limits:**
-   - Spotify's API enforces rate limits. If you're exporting a very large playlist, the process may temporarily pause.
+```bash
+python3 -m exportify --cli --playlist-url "https://open.spotify.com/playlist/..." --format csv
+```
 
 ---
 
-## Contributing
+### 🔹 Batch Export (CLI)
 
-Contributions are welcome! Please fork the repository and submit a pull request.
+```bash
+python3 -m exportify --cli --batch path/to/file.txt --format json
+```
+
+Where `file.txt` contains one playlist URL per line.
+
+Example progress output:
+```
+Exporting playlists:  75%|███████████████████████████▌     | 3/4 [00:08<00:02, 2.31s/playlist]
+```
 
 ---
 
-## Acknowledgments
+## 📦 Output Example (JSON)
 
-- [Spotify Developer API](https://developer.spotify.com/documentation/web-api/)
-- [Spotipy Library](https://spotipy.readthedocs.io/en/2.16.1/)
+```json
+[
+  {
+    "track_name": "Ride",
+    "artist_names": ["Twenty One Pilots"],
+    "album_name": "Blurryface"
+  }
+]
+```
 
 ---
 
-**Enjoy Exporting Your Playlists with Exportify-GUI!**
+## 📂 Project Structure
+
+```plaintext
+exportify/
+├── __main__.py
+├── cli.py
+├── config.py
+├── exportify.py
+├── webgui.py
+├── templates/
+│   ├── base.html
+│   ├── index.html
+│   └── result.html
+├── playlists/
+requirements.txt
+config.toml
+```
+
+---
+
+## ⚠ Known Issues
+
+- Playlist URLs must be valid and public/private Spotify playlists
+- Rate-limiting may occur for very large batch exports (Spotify API limitation)
+- GUI currently supports single playlist export (batch upload planned for v3.3+)
+
+---
+
+## 🙌 Contributing
+
+PRs welcome!  
+Fork and submit your improvements.
+
+---
+
+## 🛠 Built With
+
+- [Spotify Web API](https://developer.spotify.com/documentation/web-api/)
+- [Spotipy](https://spotipy.readthedocs.io/)
+- [Flask](https://flask.palletsprojects.com/)
+- [tqdm](https://tqdm.github.io/) — for CLI progress bars
+
+---
+
+**Export your playlists your way.**  
+🎶 Markdown. JSON. Plain Text. CSV.  
+💻 Web or CLI. Your data, your control.
