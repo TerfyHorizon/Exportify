@@ -13,13 +13,13 @@
 ## ✨ Features
 
 - **Web-Based Interface:** Local Flask WebGUI — dark-themed, mobile-safe, runs at `http://127.0.0.1:5050`
-- **CLI Mode with Flags:** Power users can use `--cli`, `--format`, and `--batch`
+- **CLI Mode with Flags:** Power users can use `--cli`, `--format`, `--batch`, and `--bind` (with `--allow-external`)
 - **Multiple Export Formats:** 
   - Markdown (`.md`)
   - Plain Text (`.txt`)
   - CSV (`.csv`)
   - JSON (`.json`)
-- **Batch Mode:** Export multiple playlists at once from a text file
+- **Batch Mode:** Export multiple playlists at once from a text file (CLI & Web GUI)
 - **Progress Bar:** Beautiful `tqdm` CLI progress bar during batch exports
 - **Fully Offline & Self-Contained:** All data stays on your machine
 
@@ -90,6 +90,14 @@ python3 -m exportifyx
 python3 -m exportifyx --cli --playlist-url "https://open.spotify.com/playlist/..." --format csv
 ```
 
+### 🌐 External Hosting (Advanced)
+
+```bash
+python3 -m exportifyx --bind 0.0.0.0 --allow-external
+```
+
+External hosting is **not** officially supported and may expose your machine to potential threats.
+
 ---
 
 ### 🔹 Batch Export (CLI)
@@ -145,7 +153,8 @@ config.toml
 
 - Playlist URLs must be valid and public/private Spotify playlists
 - Rate-limiting may occur for very large batch exports (Spotify API limitation)
-- GUI currently supports single playlist export (batch upload planned for v3.3+)
+- Web GUI now supports batch playlist export (new in v3.3.0)
+- External hosting (`--bind`) is experimental; use `--allow-external` and understand the risks.
 
 ---
 

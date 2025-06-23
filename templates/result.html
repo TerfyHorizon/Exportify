@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 <h2>{{ heading }}</h2>
+{% if results %}
+<ul>
+{% for name, count, path in results %}
+    <li><strong>{{ name }}</strong> ({{ count }} tracks) → {{ path }}</li>
+{% endfor %}
+</ul>
+{% else %}
 <p><strong>Playlist:</strong> {{ playlist_name }}</p>
 <p><strong>Tracks:</strong> {{ track_count }}</p>
 <p><strong>Saved to:</strong> {{ output_file }}</p>
+{% endif %}
 <a href="/">Back</a>
 {% endblock %}

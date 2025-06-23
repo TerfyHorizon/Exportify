@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-<form action="/export" method="post">
+<form action="/export" method="post" enctype="multipart/form-data">
     <label for="playlist_url">Spotify Playlist URL:</label>
-    <input type="text" name="playlist_url" id="playlist_url" required>
+    <input type="text" name="playlist_url" id="playlist_url">
+
+    <label for="batch_file">Batch File (.txt):</label>
+    <input type="file" name="batch_file" id="batch_file" accept=".txt">
 
     <label for="format">Export Format:</label>
     <select name="format" id="format">
